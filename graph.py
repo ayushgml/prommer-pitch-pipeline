@@ -61,19 +61,40 @@ def verify(s: State):
     return {"claims": kept, "rejected": rejected}
 
 
+REPAIR_PROMPT = """A fact-checker rejected these talking points (JSON on stdin) because they say more than their quotes.
+Rewrite each one so it is fully supported: reuse the quote's own wording, keep its hedges ("rarely", "most", "in my experience"), add nothing.
+If it can't be fixed, set text to null. Return ONLY a JSON array: [{"key": <key>, "text": <string or null>}]."""
+
+
 def draft(s: State):
-    slim = [{"id": c["id"], "position": c["position"], "quote": c["quote"]} for c in s["claims"]]
-    prompt = p.DRAFT_PROMPT
     if s["judge_feedback"]:
-        prompt += ("\n\nA reviewer rejected these talking points from your last draft as NOT supported by the "
-                   "cited quote. Fix or drop them:\n" + json.dumps(s["judge_feedback"], indent=1))
-    pitches = p.llm_json(prompt, json.dumps(slim, indent=1))
+        # Repair mode: accepted points stay frozen; only rejected ones are rewritten.
+        # (First version regenerated every pitch, which threw away accepted points and made the judge reject rate go UP.)
+        by_id = {c["id"]: c["quote"] for c in s["claims"]}
+        items = [{"key": b["key"], "text": b["text"], "reason": b["reason"],
+                  "quotes": [by_id[i] for i in b["claim_ids"]]} for b in s["judge_feedback"]]
+        fixes = {f["key"]: f.get("text") for f in p.llm_json(REPAIR_PROMPT, json.dumps(items, indent=1))}
+        pitches = [dict(pt, talking_points=list(pt["talking_points"])) for pt in s["pitches"]]
+        repaired = 0
+        for b in s["judge_feedback"]:
+            if fixes.get(b["key"]):
+                pitches[b["pitch"]]["talking_points"].append(
+                    {"text": fixes[b["key"]], "claim_ids": b["claim_ids"]})
+                repaired += 1
+        p.log("draft", attempt=s["draft_tries"], mode="repair", rejected=len(items), repaired=repaired)
+        return {"pitches": pitches, "draft_tries": s["draft_tries"] + 1}
+    slim = [{"id": c["id"], "position": c["position"], "quote": c["quote"]} for c in s["claims"]]
+    pitches = p.llm_json(p.DRAFT_PROMPT, json.dumps(slim, indent=1))
     p.log("draft", attempt=s["draft_tries"], pitches=len(pitches))
     return {"pitches": pitches, "draft_tries": s["draft_tries"] + 1}
 
 
 def cite_check(s: State):
-    return {"pitches": p.check_citations(s["pitches"], s["claims"])}
+    valid = {c["id"] for c in s["claims"]}
+    pitches = [dict(pt, talking_points=[tp for tp in pt.get("talking_points", [])
+                                         if tp.get("claim_ids") and set(tp["claim_ids"]) <= valid])
+               for pt in s["pitches"]]
+    return {"pitches": pitches}
 
 
 JUDGE_PROMPT = """You are a strict fact-checker. stdin has JSON items: {"key", "text", "quotes"}.
@@ -83,28 +104,36 @@ Return ONLY a JSON array: [{"key": <key>, "supported": true|false, "reason": <sh
 
 def judge(s: State):
     by_id = {c["id"]: c["quote"] for c in s["claims"]}
+    todo = [(pi, ti, tp) for pi, pt in enumerate(s["pitches"]) for ti, tp in enumerate(pt["talking_points"])
+            if not tp.get("ok")]
     items = [{"key": f"{pi}.{ti}", "text": tp["text"], "quotes": [by_id[i] for i in tp["claim_ids"]]}
-             for pi, pitch in enumerate(s["pitches"]) for ti, tp in enumerate(pitch["talking_points"])]
-    verdicts = {v["key"]: v for v in p.llm_json(JUDGE_PROMPT, json.dumps(items, indent=1))}
+             for pi, ti, tp in todo]
+    verdicts = {v["key"]: v for v in p.llm_json(JUDGE_PROMPT, json.dumps(items, indent=1))} if items else {}
     bad, pitches = [], []
-    for pi, pitch in enumerate(s["pitches"]):
+    for pi, pt in enumerate(s["pitches"]):
         good = []
-        for ti, tp in enumerate(pitch["talking_points"]):
+        for ti, tp in enumerate(pt["talking_points"]):
+            if tp.get("ok"):
+                good.append(tp)
+                continue
             v = verdicts.get(f"{pi}.{ti}", {"supported": False, "reason": "judge returned no verdict"})
-            (good if v["supported"] else bad).append(tp if v["supported"] else {**tp, "reason": v.get("reason")})
-        if len(good) >= 2:
-            pitches.append({**pitch, "talking_points": good})
+            if v["supported"]:
+                good.append({**tp, "ok": True})
+            else:
+                bad.append({**tp, "pitch": pi, "key": f"{pi}.{ti}", "reason": v.get("reason")})
+        pitches.append({**pt, "talking_points": good})
     p.log("judge", checked=len(items), unsupported=len(bad), reasons=[b["reason"] for b in bad])
     return {"pitches": pitches, "judge_feedback": bad}
 
 
 def approve(s: State):
+    s = {**s, "pitches": [pt for pt in s["pitches"] if len(pt["talking_points"]) >= 2]}
     pack = p.render(s["pitches"], s["claims"])
     (p.OUT / "pitch_pack.md").write_text(pack)
     # Pauses the graph; state is checkpointed. Resume with Command(resume={"approve": [pitch indices]}).
     decision = interrupt({"pitch_pack": pack, "angles": [x["angle"] for x in s["pitches"]]})
     p.log("approve", decision=decision)
-    return {"decision": decision}
+    return {"decision": decision, "pitches": s["pitches"]}  # publish indexes the same filtered list Thomas saw
 
 
 def publish(s: State):
@@ -131,7 +160,7 @@ def after_verify(s: State):
 def after_judge(s: State):
     if s["judge_feedback"] and s["draft_tries"] < MAX_DRAFT_TRIES:
         return "draft"
-    return "approve" if s["pitches"] else END
+    return "approve" if any(len(pt["talking_points"]) >= 2 for pt in s["pitches"]) else END
 
 
 def build():
