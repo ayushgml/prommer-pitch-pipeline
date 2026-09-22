@@ -1,0 +1,182 @@
+[
+ {
+  "url": "https://prommer.net/en/tech/profile/",
+  "quote": "What sets me apart is that I'm still a builder. I write production code daily \u2014 Python, TypeScript, infrastructure-as-code \u2014 and I ship AI-powered systems using Claude, GPT-4, and agentic coding pipelines.",
+  "position": "Technology executives should stay hands-on builders, and he still writes production code and ships AI systems himself.",
+  "id": "C1"
+ },
+ {
+  "url": "https://prommer.net/en/tech/profile/",
+  "quote": "I don't just set strategy; I understand what's happening at the commit level because I'm there.",
+  "position": "Good tech leadership means knowing the work at the commit level, not only setting strategy.",
+  "id": "C2"
+ },
+ {
+  "url": "https://prommer.net/en/tech/profile/",
+  "quote": "My approach is outcome-driven and pragmatic \u2014 results over process, evidence-based decisions, and right-sized solutions.",
+  "position": "Leadership should favor results over process and base decisions on evidence.",
+  "id": "C3"
+ },
+ {
+  "url": "https://prommer.net/en/tech/profile/",
+  "quote": "I build teams that are people-first, globally distributed for 24/7 delivery, and AI-augmented with modern tooling.",
+  "position": "The best engineering teams put people first, are spread across time zones, and are augmented by AI.",
+  "id": "C4"
+ },
+ {
+  "url": "https://prommer.net/en/tech/profile/",
+  "quote": "I focus on creating technology organizations that don't just execute \u2014 they compound.",
+  "position": "Technology organizations should build compounding capability, not just execute tasks.",
+  "id": "C5"
+ },
+ {
+  "url": "https://prommer.net/en/tech/profile/",
+  "quote": "I bring the same discipline and endurance mindset to building engineering organizations as I do to crossing finish lines.",
+  "position": "The discipline of endurance sports carries over to building engineering organizations.",
+  "id": "C6"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/context-engineering/",
+  "quote": "They were wrong\u2014but not in the way most expected. Prompt engineering didn't die. It evolved .",
+  "position": "Prompt engineering didn't die; it grew into the broader practice of context engineering.",
+  "id": "C7"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/context-engineering/",
+  "quote": "The conclusion is hard to avoid: clever prompts produce impressive demos; well-structured context produces production-ready systems.",
+  "position": "Well-structured context, not clever prompts, is what makes AI systems ready for production.",
+  "id": "C8"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/context-engineering/",
+  "quote": "None of these come from better prompts. They come from better context architecture.",
+  "position": "Reliable autonomous agents depend on context architecture rather than better prompts.",
+  "id": "C9"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/context-engineering/",
+  "quote": "The foundation of context engineering is treating documentation as machine-readable context, not just human reference.",
+  "position": "Documentation should be written as machine-readable context for AI, not just for humans.",
+  "id": "C10"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/context-engineering/",
+  "quote": "In 2025, AI development moved from a loose, vibes-based approach to systematic context management. This is not a passing trend.",
+  "position": "The shift from vibes-based AI development to systematic context management is lasting, not a fad.",
+  "id": "C11"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/context-engineering/",
+  "quote": "The question is not whether to invest in context engineering, but how quickly you can build the capability.",
+  "position": "Organizations must invest in context engineering; the only question is how fast.",
+  "id": "C12"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/ai-strategy/",
+  "quote": "The difference between AI success and failure rarely comes down to algorithms or infrastructure. It comes down to clarity of purpose, organizational alignment, and disciplined execution.",
+  "position": "AI success depends on clear purpose, alignment, and execution more than on technology.",
+  "id": "C13"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/ai-strategy/",
+  "quote": "The organizations winning with AI aren't necessarily the ones with the most sophisticated technology\u2014they're the ones with the clearest strategy and the discipline to execute it.",
+  "position": "Clear strategy and disciplined execution beat sophisticated technology in winning with AI.",
+  "id": "C14"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/ai-strategy/",
+  "quote": "Most organizations overestimate their data readiness. Data quality, accessibility, and governance issues derail more AI projects than any technical challenge. Budget 60-70% of project effort for data work.",
+  "position": "Data readiness is usually overestimated, and data work should take most of an AI project's effort.",
+  "id": "C15"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/ai-strategy/",
+  "quote": "In every failed AI project I've audited, the root cause was never the algorithm. It was always data quality, unclear objectives, or lack of organizational readiness.",
+  "position": "AI projects fail because of data, unclear objectives, or organizational readiness, not algorithms.",
+  "id": "C16"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/ai-strategy/",
+  "quote": "The goal isn't to race to Stage 4\u2014it's to progress deliberately, building the foundations that enable sustainable transformation rather than fragile quick fixes.",
+  "position": "AI maturity should be built deliberately rather than rushed with quick fixes.",
+  "id": "C17"
+ },
+ {
+  "url": "https://prommer.net/en/tech/guides/ai-strategy/",
+  "quote": "Without effective change management, even technically successful projects fail to deliver value.",
+  "position": "Change management is essential; technically sound AI projects fail without it.",
+  "id": "C18"
+ },
+ {
+  "url": "https://prommer.net/en/tech/ai-consulting/enterprise-ai-strategy/",
+  "quote": "The worst AI projects begin with \"we need to use AI.\" The best begin with \"we have this problem\u2014can AI solve it?\"",
+  "position": "AI initiatives should start from a business problem, not from wanting to use AI.",
+  "id": "C19"
+ },
+ {
+  "url": "https://prommer.net/en/tech/ai-consulting/enterprise-ai-strategy/",
+  "quote": "\"Executive support\" is not enough. You need someone senior who will fight for budget and resources when the first pilot disappoints.",
+  "position": "AI needs a committed C-level owner, not just general executive support.",
+  "id": "C20"
+ },
+ {
+  "url": "https://prommer.net/en/tech/ai-consulting/enterprise-ai-strategy/",
+  "quote": "A 90-day pilot with clear success metrics is worth more than a 12-month roadmap with vague outcomes.",
+  "position": "Short pilots with clear metrics are worth more than long, vague roadmaps.",
+  "id": "C21"
+ },
+ {
+  "url": "https://prommer.net/en/tech/ai-consulting/enterprise-ai-strategy/",
+  "quote": "If AI can't deliver at least 10x improvement in a key metric, skip it. Marginal improvements rarely justify the complexity and the organizational drag of an AI initiative.",
+  "position": "Only pursue AI use cases that promise a 10x improvement; small gains aren't worth the cost.",
+  "id": "C22"
+ },
+ {
+  "url": "https://prommer.net/en/tech/ai-consulting/enterprise-ai-strategy/",
+  "quote": "The model usually works. Getting people to actually use it\u2014and trust it\u2014is where most AI initiatives die quietly.",
+  "position": "Most AI initiatives fail on adoption and trust, not on model performance.",
+  "id": "C23"
+ },
+ {
+  "url": "https://prommer.net/en/tech/ai-consulting/enterprise-ai-strategy/",
+  "quote": "Most AI strategy failures I've audited weren't caused by bad technology. They came from companies that skipped the boring work\u2014clear objectives, solid data foundations, governance\u2014and went straight to the interesting parts.",
+  "position": "AI strategies fail when companies skip foundational work like objectives, data, and governance.",
+  "id": "C24"
+ },
+ {
+  "url": "https://prommer.net/en/tech/press/",
+  "quote": "They didn\u2019t want their best contributions footnoted as \u2018cowritten by Claude\u2019",
+  "position": "Requiring engineers to attribute their work to AI backfires because they don't want their best work diminished.",
+  "id": "C25"
+ },
+ {
+  "url": "https://prommer.net/en/tech/press/",
+  "quote": "The fix that worked was crediting outcomes over tools \u2014 the responsible person owns the credit and the blame regardless of how much AI helped.",
+  "position": "Credit outcomes rather than tools; the responsible person owns the credit and blame whatever AI contributed.",
+  "id": "C26"
+ },
+ {
+  "url": "https://prommer.net/en/tech/press/",
+  "quote": "Ein GLP-1-Medikament macht dich nicht schneller oder kr\u00e4ftiger. Es steigert in dem Sinne die Leistung nicht. Man muss trotzdem das Training reinstecken.",
+  "position": "GLP-1 drugs don't enhance athletic performance; you still have to put in the training.",
+  "id": "C27"
+ },
+ {
+  "url": "https://prommer.net/en/tech/press/",
+  "quote": "Thomas Prommer argues that identity verification should not end after an initial login. Instead, trust should evolve continuously according to user behavior and changing levels of risk.",
+  "position": "Identity verification should be continuous and adapt to behavior and risk, not end at login.",
+  "id": "C28"
+ },
+ {
+  "url": "https://prommer.net/en/tech/press/",
+  "quote": "Crypto now trades like a high-beta tech asset, tied to rate policy and liquidity.",
+  "position": "Crypto behaves like a high-beta tech asset driven by interest rates and liquidity.",
+  "id": "C29"
+ },
+ {
+  "url": "https://prommer.net/en/tech/press/",
+  "quote": "enterprises stick to low-risk copilot tools to sidestep model-risk governance, and transformation lands only when a CEO, investor, or single P&L owner drives it with accountability.",
+  "position": "Enterprises settle for low-risk copilots to avoid governance, and real AI transformation needs one accountable owner.",
+  "id": "C30"
+ }
+]

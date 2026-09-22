@@ -1,0 +1,159 @@
+[
+ {
+  "angle": "Prompt Engineering Didn't Die, It Grew Up: The Case for Context Engineering",
+  "audience": "Developer- and AI-engineering-focused podcasts and technical publications. Their listeners build LLM applications and agents and are working out how to get from a good demo to a reliable production system.",
+  "talking_points": [
+   {
+    "text": "Thomas argues that prompt engineering didn't die; it evolved into the broader practice of context engineering.",
+    "claim_ids": [
+     "C7"
+    ]
+   },
+   {
+    "text": "In his view, clever prompts produce impressive demos, but well-structured context produces production-ready systems.",
+    "claim_ids": [
+     "C8"
+    ]
+   },
+   {
+    "text": "He argues that reliable autonomous agents come from better context architecture, not better prompts.",
+    "claim_ids": [
+     "C9"
+    ]
+   },
+   {
+    "text": "The foundation of context engineering, he says, is treating documentation as machine-readable context rather than only as reference material for humans.",
+    "claim_ids": [
+     "C10"
+    ]
+   },
+   {
+    "text": "He sees the 2025 shift from vibes-based AI development to systematic context management as a lasting change, not a passing trend.",
+    "claim_ids": [
+     "C11"
+    ]
+   },
+   {
+    "text": "For organizations, he frames the decision as how quickly to build context-engineering capability, not whether to invest in it.",
+    "claim_ids": [
+     "C12"
+    ]
+   },
+   {
+    "text": "He brings a practitioner's view because he writes production code daily and ships AI-powered systems using Claude, GPT-4, and agentic coding pipelines.",
+    "claim_ids": [
+     "C1"
+    ]
+   }
+  ]
+ },
+ {
+  "angle": "The Model Usually Works: Why AI Initiatives Really Fail and What to Do Instead",
+  "audience": "Business, executive-leadership, and digital-transformation shows and outlets. Their audience of CEOs, CIOs, and senior decision-makers owns AI budgets and needs to know why so many initiatives stall.",
+  "talking_points": [
+   {
+    "text": "Thomas says that in every failed AI project he has audited, the root cause was never the algorithm but data quality, unclear objectives, or a lack of organizational readiness.",
+    "claim_ids": [
+     "C16",
+     "C24"
+    ]
+   },
+   {
+    "text": "He argues that most organizations overestimate their data readiness and should budget 60\u201370% of project effort for data work.",
+    "claim_ids": [
+     "C15"
+    ]
+   },
+   {
+    "text": "In his view, the model usually works, and most AI initiatives quietly die on adoption and trust.",
+    "claim_ids": [
+     "C23",
+     "C18"
+    ]
+   },
+   {
+    "text": "He says the best AI projects start with a business problem, not with the goal of using AI, and should be pursued only if they can deliver at least a 10x improvement in a key metric.",
+    "claim_ids": [
+     "C19",
+     "C22"
+    ]
+   },
+   {
+    "text": "He argues that general executive support isn't enough: AI needs a senior owner who will fight for budget when the first pilot disappoints, and transformation lands only when a single accountable owner drives it.",
+    "claim_ids": [
+     "C20",
+     "C30"
+    ]
+   },
+   {
+    "text": "He says enterprises often stick to low-risk copilot tools to avoid model-risk governance.",
+    "claim_ids": [
+     "C30"
+    ]
+   },
+   {
+    "text": "He favors a 90-day pilot with clear success metrics over a 12-month roadmap with vague outcomes, and deliberate maturity-building over fragile quick fixes.",
+    "claim_ids": [
+     "C21",
+     "C17"
+    ]
+   },
+   {
+    "text": "His bottom line is that organizations winning with AI have the clearest strategy and the discipline to execute it, not necessarily the most sophisticated technology.",
+    "claim_ids": [
+     "C13",
+     "C14"
+    ]
+   }
+  ]
+ },
+ {
+  "angle": "The Builder Executive: Leading AI-Augmented Engineering Teams from the Commit Level",
+  "audience": "Engineering-leadership and CTO-focused podcasts and publications. Their audience of engineering managers, VPs, and CTOs is rethinking team structure, AI tooling, and how credit works when AI contributes to the work.",
+  "talking_points": [
+   {
+    "text": "Thomas argues that technology executives should stay hands-on builders, and he still writes production code daily in Python, TypeScript, and infrastructure-as-code.",
+    "claim_ids": [
+     "C1"
+    ]
+   },
+   {
+    "text": "He says good tech leadership means understanding what's happening at the commit level, not only setting strategy.",
+    "claim_ids": [
+     "C2"
+    ]
+   },
+   {
+    "text": "He builds teams that are people-first, globally distributed for 24/7 delivery, and AI-augmented with modern tooling.",
+    "claim_ids": [
+     "C4"
+    ]
+   },
+   {
+    "text": "He argues that requiring engineers to attribute work to AI backfires because they don't want their best contributions footnoted as 'cowritten by Claude.'",
+    "claim_ids": [
+     "C25"
+    ]
+   },
+   {
+    "text": "The fix that worked, he says, was crediting outcomes over tools: the responsible person owns the credit and the blame, however much AI helped.",
+    "claim_ids": [
+     "C26"
+    ]
+   },
+   {
+    "text": "His leadership approach puts results over process and relies on evidence-based decisions and right-sized solutions.",
+    "claim_ids": [
+     "C3"
+    ]
+   },
+   {
+    "text": "He aims to build technology organizations that don't just execute but compound, and he brings the same discipline and endurance mindset he applies to crossing finish lines.",
+    "claim_ids": [
+     "C5",
+     "C6"
+    ]
+   }
+  ]
+ }
+]
