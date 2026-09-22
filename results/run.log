@@ -1,0 +1,25 @@
+{"t": 1790070706.7, "step": "crawl", "url": "/en/tech/profile/", "chars": 14308}
+{"t": 1790070707.6, "step": "crawl", "url": "/en/tech/guides/context-engineering/", "chars": 15695}
+{"t": 1790070708.3, "step": "crawl", "url": "/en/tech/guides/ai-strategy/", "chars": 15813}
+{"t": 1790070708.7, "step": "crawl", "url": "/en/tech/guides/enterprise-ai-strategy/", "redirect_to": "/en/tech/ai-consulting/enterprise-ai-strategy/"}
+{"t": 1790070709.3, "step": "crawl", "url": "/en/tech/ai-consulting/enterprise-ai-strategy/", "chars": 14055}
+{"t": 1790070710.0, "step": "crawl", "url": "/en/tech/press/", "chars": 9492}
+{"t": 1790070714.1, "step": "llm", "model": "gemini-3.8-flash", "attempt": 0, "secs": 4.0, "ok": true, "tokens_in": 11457, "tokens_out": 784}
+{"t": 1790070714.1, "step": "extract", "attempt": 0, "claims": 9}
+{"t": 1790070714.1, "step": "verify", "kept": 8, "dropped": [{"id": "C1", "quote": "clever prompts produce impressive demos; well-structured context produces produc"}]}
+{"t": 1790070721.3, "step": "llm", "model": "gemini-3.8-flash", "attempt": 0, "secs": 7.1, "ok": true, "tokens_in": 719, "tokens_out": 546}
+{"t": 1790070721.3, "step": "draft", "attempt": 0, "pitches": 3}
+{"t": 1790070721.3, "step": "check", "angle": "Why AI Initiatives Fail: The Organizational and Human Blind Spots", "kept_points": 3, "dropped_points": 0}
+{"t": 1790070721.3, "step": "check", "angle": "Context Architecture: Fixing the Real Root Cause of AI Agent Failures", "kept_points": 2, "dropped_points": 0}
+{"t": 1790070721.3, "step": "check", "angle": "Pragmatic AI: The 10x Rule and High-Impact 90-Day Pilots", "kept_points": 2, "dropped_points": 0}
+{"t": 1790070753.0, "step": "llm", "model": "gemini-3.8-flash", "attempt": 0, "secs": 31.7, "ok": true, "tokens_in": 719, "tokens_out": 124}
+{"t": 1790070753.0, "step": "judge", "checked": 7, "unsupported": 1, "reasons": ["'flawed context architecture' is not supported by the quotes"]}
+{"t": 1790070760.5, "step": "llm", "model": "gemini-3.8-flash", "attempt": 0, "secs": 7.6, "ok": true, "tokens_in": 815, "tokens_out": 563}
+{"t": 1790070760.5, "step": "draft", "attempt": 1, "pitches": 3}
+{"t": 1790070760.5, "step": "check", "angle": "Why AI Deployments Fail: The Shift to Context Management", "kept_points": 2, "dropped_points": 0}
+{"t": 1790070760.5, "step": "check", "angle": "Beyond the Algorithm: Why Change Management Determines Enterprise AI Success", "kept_points": 3, "dropped_points": 0}
+{"t": 1790070760.5, "step": "check", "angle": "Pruning the AI Roadmap: The 10x Metric and 90-Day Execution", "kept_points": 2, "dropped_points": 0}
+{"t": 1790070787.4, "step": "llm", "model": "gemini-3.8-flash", "attempt": 0, "secs": 26.9, "ok": true, "tokens_in": 703, "tokens_out": 211}
+{"t": 1790070787.4, "step": "judge", "checked": 7, "unsupported": 2, "reasons": ["The quote only claims this for projects the author has audited, not all failed AI projects generally.", "The quote states the pilot is \"worth more,\" not that it provides \"significantly\" more value."]}
+{"t": 1790070787.4, "step": "approve", "decision": {"approve": [0, 1]}}
+{"t": 1790070787.4, "step": "publish", "published": 2, "path": "out/approved_pitches.md"}

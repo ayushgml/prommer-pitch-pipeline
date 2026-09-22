@@ -1,2 +1,4 @@
 out/run.log
 __pycache__/
+.env
+.venv/

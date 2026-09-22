@@ -5,7 +5,7 @@ crawl (code) -> extract claims (LLM) -> verify quotes (code) -> draft pitches (L
 The LLM never gets to state an opinion for Thomas that isn't a verbatim quote from his own site.
 Nothing is sent anywhere: output is a markdown file with status PENDING_APPROVAL.
 """
-import json, re, subprocess, sys, time
+import json, os, re, subprocess, sys, time
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -17,7 +17,7 @@ PAGES = [
     "/en/tech/guides/enterprise-ai-strategy/",
     "/en/tech/press/",
 ]
-OUT = Path("out")
+OUT = Path(os.environ.get("OUT_DIR", "out"))  # /tmp on Vercel (read-only fs)
 MAX_CHARS_PER_PAGE = 12000
 
 
@@ -94,26 +94,51 @@ def crawl():
     return pages
 
 
-# ---------- LLM call (claude CLI, headless) ----------
+# ---------- LLM call (Gemini, JSON mode) ----------
+def _load_env():
+    env = Path(__file__).with_name(".env")
+    if env.exists():
+        for line in env.read_text().splitlines():
+            k, _, v = line.partition("=")
+            if k.strip() and v.strip():
+                os.environ.setdefault(k.strip(), v.strip().strip("'\""))
+
+
+_client = None
+MODEL = None
+
+
+def _gemini():
+    global _client, MODEL
+    if _client is None:
+        from google import genai
+        _load_env()
+        _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
+    return _client
+
+
 def llm_json(prompt, stdin_text, retries=1):
-    """Ask for JSON; on parse failure, retry once with the parse error fed back."""
+    """System prompt + data as contents, JSON mime type. On parse failure, retry once with the error fed back."""
+    from google.genai import types
+    client = _gemini()
     for attempt in range(retries + 1):
         t0 = time.time()
-        r = subprocess.run(
-            ["claude", "-p", prompt, "--output-format", "json"],
-            input=stdin_text, capture_output=True, text=True, timeout=300,
+        resp = client.models.generate_content(
+            model=MODEL,
+            contents=stdin_text,
+            config=types.GenerateContentConfig(
+                system_instruction=prompt, response_mime_type="application/json", temperature=0.2),
         )
-        envelope = json.loads(r.stdout)
-        raw = envelope.get("result", "")
-        m = re.search(r"```(?:json)?\s*(.*?)```", raw, re.S)
-        body = m.group(1) if m else raw
+        raw = resp.text or ""
+        u = resp.usage_metadata
         try:
-            data = json.loads(body)
-            log("llm", attempt=attempt, secs=round(time.time() - t0, 1), ok=True,
-                cost_usd=envelope.get("total_cost_usd"))
+            data = json.loads(raw)
+            log("llm", model=MODEL, attempt=attempt, secs=round(time.time() - t0, 1), ok=True,
+                tokens_in=u.prompt_token_count, tokens_out=u.candidates_token_count)
             return data
         except json.JSONDecodeError as e:
-            log("llm", attempt=attempt, ok=False, error=str(e), head=raw[:200])
+            log("llm", model=MODEL, attempt=attempt, ok=False, error=str(e), head=raw[:200])
             prompt += f"\n\nYour previous reply was not valid JSON ({e}). Reply with ONLY the JSON."
     raise RuntimeError("LLM did not return valid JSON")
 

@@ -1,6 +1,6 @@
 # Pitch pack for Thomas Prommer
 
-**status: PENDING_APPROVAL** - nothing below has been sent.
+**status: APPROVED** - nothing below has been sent.
 
 ## Why AI Deployments Fail: The Shift to Context Management
 _Audience:_ Software engineering and technical leadership podcasts targeting CTOs and engineering managers building LLM-powered applications.

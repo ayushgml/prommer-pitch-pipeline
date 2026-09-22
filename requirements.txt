@@ -1,0 +1,3 @@
+fastapi
+langgraph
+google-genai
